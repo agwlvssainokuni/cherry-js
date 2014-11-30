@@ -1,0 +1,30 @@
+apply plugin: "java"
+apply plugin: "eclipse-wtp"
+
+version = "1.0"
+
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
+
+compileJava.options.encoding = "UTF-8"
+compileTestJava.options.encoding = "UTF-8"
+
+repositories { mavenCentral() }
+
+configurations {
+	all*.exclude group: "commons-logging", module: "commons-logging"
+}
+
+ext {
+	versionGuava = "18.0"
+	versionSpring = "4.1.2.RELEASE"
+	versionJunit = "4.11"
+	versionMockito = "1.10.8"
+}
+
+dependencies {
+	compile "com.google.guava:guava:${versionGuava}"
+	compile "org.springframework:spring-core:${versionSpring}"
+	testCompile "junit:junit:${versionJunit}"
+	testCompile "org.mockito:mockito-all:${versionMockito}"
+}
