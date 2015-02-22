@@ -193,13 +193,13 @@ Number.prototype.isLeapYear = function() {
 };
 
 /**
- * 月の日数を取得する。
+ * 当月の日数を取得する。
  * 
- * @param {Number} month 月。
- * @returns {Number} 月の日数。
+ * @param {Number} year 年。
+ * @returns {Number} 当月の日数。
  */
-Number.prototype.getNumberOfDaysInMonth = function(month) {
-	switch (month) {
+Number.prototype.getNumberOfDays = function(year) {
+	switch (this) {
 	case 1:
 	case 3:
 	case 5:
@@ -214,7 +214,9 @@ Number.prototype.getNumberOfDaysInMonth = function(month) {
 	case 11:
 		return 30;
 	case 2:
-		if (this.isLeapYear()) {
+		if (year == undefined) {
+			return 28;
+		} else if (year.isLeapYear()) {
 			return 29;
 		} else {
 			return 28;
@@ -456,7 +458,7 @@ String.prototype.isDateFormat = function() {
 	var y = Number(match[1]);
 	var m = Number(match[2]);
 	var d = Number(match[3]);
-	return m >= 1 && m <= 12 && d >= 1 && d <= y.getNumberOfDaysInMonth(m);
+	return m >= 1 && m <= 12 && d >= 1 && d <= m.getNumberOfDays(y);
 };
 
 /**
@@ -491,5 +493,5 @@ String.prototype.isDateTimeFormat = function() {
 	var y = Number(match[1]);
 	var m = Number(match[2]);
 	var d = Number(match[3]);
-	return m >= 1 && m <= 12 && d >= 1 && d <= y.getNumberOfDaysInMonth(m);
+	return m >= 1 && m <= 12 && d >= 1 && d <= m.getNumberOfDays(y);
 };
