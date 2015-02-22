@@ -68,3 +68,41 @@ test("validator - Number.prototype.isHalfKatakana", function() {
 	equal(0xFF60.isHalfKatakana(), false, "0xFF60 false");
 	equal(0xFFA0.isHalfKatakana(), false, "0xFFA0 false");
 });
+
+test("validator - Number.prototype.isFullNumeric", function() {
+	var text = "０１２３４５６７８９";
+	for (var i = 0; i < text.length; i++) {
+		equal(text.charCodeAt(i).isFullNumeric(), true, text.substring(i, i + 1) + " true");
+	}
+	equal(0xFF0F.isFullNumeric(), false, "0xFF0F false");
+	equal(0xFF1A.isFullNumeric(), false, "0xFF1A false");
+});
+
+test("validator - Number.prototype.isFullUpper", function() {
+	var text = "ＡＢＣＤＥＦＧＨＩＪＫＬＭＮＯＰＱＲＳＴＵＶＷＸＹＺ";
+	for (var i = 0; i < text.length; i++) {
+		equal(text.charCodeAt(i).isFullUpper(), true, text.substring(i, i + 1) + " true");
+	}
+	equal(0xFF20.isFullUpper(), false, "0xFF20 false");
+	equal(0xFF3B.isFullUpper(), false, "0xFF3B false");
+});
+
+test("validator - Number.prototype.isFullLower", function() {
+	var text = "ａｂｃｄｅｆｇｈｉｊｋｌｍｎｏｐｑｒｓｔｕｖｗｘｙｚ";
+	for (var i = 0; i < text.length; i++) {
+		equal(text.charCodeAt(i).isFullLower(), true, text.substring(i, i + 1) + " true");
+	}
+	equal(0xFF40.isFullLower(), false, "0xFF40 false");
+	equal(0xFF5B.isFullLower(), false, "0xFF5B false");
+});
+
+test("validator - Number.prototype.isFullAlpha", function() {
+	var text = "ＡＢＣＤＥＦＧＨＩＪＫＬＭＮＯＰＱＲＳＴＵＶＷＸＹＺａｂｃｄｅｆｇｈｉｊｋｌｍｎｏｐｑｒｓｔｕｖｗｘｙｚ";
+	for (var i = 0; i < text.length; i++) {
+		equal(text.charCodeAt(i).isFullAlpha(), true, text.substring(i, i + 1) + " true");
+	}
+	equal(0xFF20.isFullAlpha(), false, "0xFF20 false");
+	equal(0xFF3B.isFullAlpha(), false, "0xFF3B false");
+	equal(0xFF40.isFullLower(), false, "0xFF40 false");
+	equal(0xFF5B.isFullLower(), false, "0xFF5B false");
+});
