@@ -106,3 +106,21 @@ test("validator - Number.prototype.isFullAlpha", function() {
 	equal(0xFF40.isFullLower(), false, "0xFF40 false");
 	equal(0xFF5B.isFullLower(), false, "0xFF5B false");
 });
+
+test("validator - Number.prototype.isFullHiragana", function() {
+	var text = "ぁあぃいぅうぇえぉおかがきぎくぐけげこごさざしじすずせぜそぞただちぢっつづてでとどなにぬねのはばぱひびぴふぶぷへべぺほぼぽまみむめもゃやゅゆょよらりるれろゎわゐゑをんゔゕゖ゙゚ゝゞゟ" + "・ー";
+	for (var i = 0; i < text.length; i++) {
+		equal(text.charCodeAt(i).isFullHiragana(), true, text.substring(i, i + 1) + " true");
+	}
+	equal(0x303F.isFullHiragana(), false, "0x303F false");
+	equal(0x3100.isFullHiragana(), false, "0x3100 false");
+});
+
+test("validator - Number.prototype.isFullKatakana", function() {
+	var text = "ァアィイゥウェエォオカガキギクグケゲコゴサザシジスズセゼソゾタダチヂッツヅテデトドナニヌネノハバパヒビピフブプヘベペホボポマミムメモャヤュユョヨラリルレロヮワヰヱヲンヴヵヶヷヸヹヺ・ヽヾヿ" + "゛゜";
+	for (var i = 0; i < text.length; i++) {
+		equal(text.charCodeAt(i).isFullKatakana(), true, text.substring(i, i + 1) + " true");
+	}
+	equal(0x303F.isFullKatakana(), false, "0x303F false");
+	equal(0x3100.isFullKatakana(), false, "0x3100 false");
+});
