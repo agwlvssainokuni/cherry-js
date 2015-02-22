@@ -224,6 +224,11 @@ Number.prototype.getNumberOfDaysInMonth = function(month) {
 	}
 };
 
+/**
+ * ASCII文字列であるか検証する。
+ * 
+ * @returns {Boolean} ASCII文字列ならばtrue、さもなくばfalse。
+ */
 String.prototype.isAscii = function() {
 	for (var i = 0; i < this.length; i++) {
 		var ch = this.charCodeAt(i);
@@ -234,6 +239,11 @@ String.prototype.isAscii = function() {
 	return true;
 };
 
+/**
+ * 半角英字文字列であるか検証する。
+ * 
+ * @returns {Boolean} 半角英字文字列ならばtrue、さもなくばfalse。
+ */
 String.prototype.isAlpha = function() {
 	for (var i = 0; i < this.length; i++) {
 		var ch = this.charCodeAt(i);
@@ -245,6 +255,11 @@ String.prototype.isAlpha = function() {
 	return true;
 };
 
+/**
+ * 半角数字文字列であるか検証する。
+ * 
+ * @returns {Boolean} 半角数字文字列ならばtrue、さもなくばfalse。
+ */
 String.prototype.isNumeric = function() {
 	for (var i = 0; i < this.length; i++) {
 		var ch = this.charCodeAt(i);
@@ -256,6 +271,11 @@ String.prototype.isNumeric = function() {
 	return true;
 };
 
+/**
+ * 半角英数字文字列であるか検証する。
+ * 
+ * @returns {Boolean} 半角英数字文字列ならばtrue、さもなくばfalse。
+ */
 String.prototype.isAlphaNumeric = function() {
 	for (var i = 0; i < this.length; i++) {
 		var ch = this.charCodeAt(i);
@@ -270,6 +290,11 @@ String.prototype.isAlphaNumeric = function() {
 	return true;
 };
 
+/**
+ * 半角カタカナ文字列であるか検証する。
+ * 
+ * @returns {Boolean} 半角カタカナ文字列ならばtrue、さもなくばfalse。
+ */
 String.prototype.isHalfKatakana = function() {
 	for (var i = 0; i < this.length; i++) {
 		var ch = this.charCodeAt(i);
@@ -281,6 +306,11 @@ String.prototype.isHalfKatakana = function() {
 	return true;
 };
 
+/**
+ * 半角文字列であるか検証する。
+ * 
+ * @returns {Boolean} 半角文字列ならばtrue、さもなくばfalse。
+ */
 String.prototype.isHalfWidth = function() {
 	for (var i = 0; i < this.length; i++) {
 		var ch = this.charCodeAt(i);
@@ -295,6 +325,11 @@ String.prototype.isHalfWidth = function() {
 	return true;
 };
 
+/**
+ * 全角英字文字列であるか検証する。
+ * 
+ * @returns {Boolean} 全角英字文字列ならばtrue、さもなくばfalse。
+ */
 String.prototype.isFullAlpha = function() {
 	for (var i = 0; i < this.length; i++) {
 		var ch = this.charCodeAt(i);
@@ -306,6 +341,11 @@ String.prototype.isFullAlpha = function() {
 	return true;
 };
 
+/**
+ * 全角数字文字列であるか検証する。
+ * 
+ * @returns {Boolean} 全角数字文字列ならばtrue、さもなくばfalse。
+ */
 String.prototype.isFullNumeric = function() {
 	for (var i = 0; i < this.length; i++) {
 		var ch = this.charCodeAt(i);
@@ -317,6 +357,11 @@ String.prototype.isFullNumeric = function() {
 	return true;
 };
 
+/**
+ * 全角英数字文字列であるか検証する。
+ * 
+ * @returns {Boolean} 全角英数字文字列ならばtrue、さもなくばfalse。
+ */
 String.prototype.isFullAlphaNumeric = function() {
 	for (var i = 0; i < this.length; i++) {
 		var ch = this.charCodeAt(i);
@@ -331,6 +376,11 @@ String.prototype.isFullAlphaNumeric = function() {
 	return true;
 };
 
+/**
+ * 全角ひらがな文字列であるか検証する。
+ * 
+ * @returns {Boolean} 全角ひらがな文字列ならばtrue、さもなくばfalse。
+ */
 String.prototype.isFullHiragana = function() {
 	for (var i = 0; i < this.length; i++) {
 		var ch = this.charCodeAt(i);
@@ -342,6 +392,11 @@ String.prototype.isFullHiragana = function() {
 	return true;
 };
 
+/**
+ * 全角カタカナ文字列であるか検証する。
+ * 
+ * @returns {Boolean} 全角カタカナ文字列ならばtrue、さもなくばfalse。
+ */
 String.prototype.isFullKatakana = function() {
 	for (var i = 0; i < this.length; i++) {
 		var ch = this.charCodeAt(i);
@@ -353,6 +408,11 @@ String.prototype.isFullKatakana = function() {
 	return true;
 };
 
+/**
+ * 全角文字列であるか検証する。
+ * 
+ * @returns {Boolean} 全角文字列ならばtrue、さもなくばfalse。
+ */
 String.prototype.isFullWidth = function() {
 	for (var i = 0; i < this.length; i++) {
 		var ch = this.charCodeAt(i);
@@ -364,6 +424,11 @@ String.prototype.isFullWidth = function() {
 	return true;
 };
 
+/**
+ * 数値の文字列表記形式であるか検証する。
+ * 
+ * @returns {Boolean} 数値の文字列表記形式ならばtrue、さもなくばfalse。
+ */
 String.prototype.isNumberFormat = function() {
 	if (this.length <= 0) {
 		return true;
@@ -375,6 +440,11 @@ String.prototype.isNumberFormat = function() {
 	return true;
 };
 
+/**
+ * 日付の文字列表記形式であるか検証する。
+ * 
+ * @returns {Boolean} 日付の文字列表記形式ならばtrue、さもなくばfalse。
+ */
 String.prototype.isDateFormat = function() {
 	if (this.length <= 0) {
 		return true;
@@ -389,6 +459,11 @@ String.prototype.isDateFormat = function() {
 	return m >= 1 && m <= 12 && d >= 1 && d <= y.getNumberOfDaysInMonth(m);
 };
 
+/**
+ * 時刻の文字列表記形式であるか検証する。
+ * 
+ * @returns {Boolean} 時刻の文字列表記形式ならばtrue、さもなくばfalse。
+ */
 String.prototype.isTimeFormat = function() {
 	if (this.length <= 0) {
 		return true;
@@ -400,6 +475,11 @@ String.prototype.isTimeFormat = function() {
 	return true;
 };
 
+/**
+ * 日時の文字列表記形式であるか検証する。
+ * 
+ * @returns {Boolean} 日時の文字列表記形式ならばtrue、さもなくばfalse。
+ */
 String.prototype.isDateTimeFormat = function() {
 	if (this.length <= 0) {
 		return true;
