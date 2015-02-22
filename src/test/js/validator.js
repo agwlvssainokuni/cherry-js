@@ -224,3 +224,68 @@ test("validator - String.prototype.isFullWidth", function(assert) {
 	equal("ＡＢＣ１２３あいうアイウA".isFullWidth(), false, "ＡＢＣ１２３あいうアイウA");
 	equal("ＡＢＣ１２３あいうアイウｱ".isFullWidth(), false, "ＡＢＣ１２３あいうアイウｱ");
 });
+
+test("validator - String.prototype.isNumberFormat", function(assert) {
+	equal("".isNumberFormat(), true, "<empty>");
+
+	equal("123".isNumberFormat(), true, "123");
+	equal("+123".isNumberFormat(), true, "+123");
+	equal("-123".isNumberFormat(), true, "-123");
+	equal("123.".isNumberFormat(), true, "123.");
+	equal("+123.".isNumberFormat(), true, "+123.");
+	equal("-123.".isNumberFormat(), true, "-123.");
+	equal("123.4".isNumberFormat(), true, "123.4");
+	equal("+123.4".isNumberFormat(), true, "+123.4");
+	equal("-123.4".isNumberFormat(), true, "-123.4");
+
+	equal("123A".isNumberFormat(), false, "123A");
+	equal("+123A".isNumberFormat(), false, "+123A");
+	equal("-123A".isNumberFormat(), false, "-123A");
+	equal("123.A".isNumberFormat(), false, "123.A");
+	equal("+123.A".isNumberFormat(), false, "+123.A");
+	equal("-123.A".isNumberFormat(), false, "-123.A");
+	equal("123.4A".isNumberFormat(), false, "123.4A");
+	equal("+123.4A".isNumberFormat(), false, "+123.4A");
+	equal("-123.4A".isNumberFormat(), false, "-123.4A");
+});
+
+test("validator - String.prototype.isDateFormat", function(assert) {
+	equal("".isDateFormat(), true, "<empty>");
+	equal("2015/01/23".isDateFormat(), true, "2015/01/23");
+	equal("20150123".isDateFormat(), false, "20150123");
+	equal("2015/00/23".isDateFormat(), false, "2015/00/23");
+	equal("2015/13/23".isDateFormat(), false, "2015/13/23");
+	equal("2015/01/00".isDateFormat(), false, "2015/01/00");
+	equal("2015/01/32".isDateFormat(), false, "2015/01/32");
+});
+
+test("validator - String.prototype.isTimeFormat", function(assert) {
+	equal("".isTimeFormat(), true, "<empty>");
+	equal("00:00:00".isTimeFormat(), true, "00:00:00");
+	equal("01:01:01".isTimeFormat(), true, "01:01:01");
+	equal("02:02:02".isTimeFormat(), true, "02:02:02");
+	equal("03:03:03".isTimeFormat(), true, "03:03:03");
+	equal("04:04:04".isTimeFormat(), true, "04:04:04");
+	equal("05:05:05".isTimeFormat(), true, "05:05:05");
+	equal("06:06:06".isTimeFormat(), true, "06:06:06");
+	equal("07:07:07".isTimeFormat(), true, "07:07:07");
+	equal("08:08:08".isTimeFormat(), true, "08:08:08");
+	equal("09:09:09".isTimeFormat(), true, "09:09:09");
+	equal("10:10:10".isTimeFormat(), true, "10:10:10");
+	equal("11:10:10".isTimeFormat(), true, "11:10:10");
+	equal("12:20:20".isTimeFormat(), true, "12:20:20");
+	equal("13:30:30".isTimeFormat(), true, "13:30:30");
+	equal("14:40:40".isTimeFormat(), true, "14:40:40");
+	equal("15:50:50".isTimeFormat(), true, "15:50:50");
+	equal("16:19:19".isTimeFormat(), true, "16:19:19");
+	equal("17:29:29".isTimeFormat(), true, "17:29:29");
+	equal("18:39:39".isTimeFormat(), true, "18:39:39");
+	equal("19:49:49".isTimeFormat(), true, "19:49:49");
+	equal("20:59:59".isTimeFormat(), true, "20:59:59");
+	equal("21:59:59".isTimeFormat(), true, "21:59:59");
+	equal("22:59:59".isTimeFormat(), true, "22:59:59");
+	equal("23:59:59".isTimeFormat(), true, "23:59:59");
+	equal("24:59:59".isTimeFormat(), false, "24:59:59");
+	equal("23:60:59".isTimeFormat(), false, "23:60:59");
+	equal("23:59:60".isTimeFormat(), false, "23:59:60");
+});
