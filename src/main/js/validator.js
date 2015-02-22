@@ -325,7 +325,7 @@ String.prototype.isHalfWidth = function() {
 String.prototype.isFullAlpha = function() {
 	for (var i = 0; i < this.length; i++) {
 		var ch = this.charCodeAt(i);
-		if (ch.isFullApha()) {
+		if (ch.isFullAlpha()) {
 			continue;
 		}
 		return false;
@@ -408,7 +408,7 @@ String.prototype.isFullKatakana = function() {
 String.prototype.isFullWidth = function() {
 	for (var i = 0; i < this.length; i++) {
 		var ch = this.charCodeAt(i);
-		if (!ch.isHalfWidth()) {
+		if (!(ch.isBasicLatin() || ch.isHalfKatakana())) {
 			continue;
 		}
 		return false;

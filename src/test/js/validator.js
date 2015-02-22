@@ -151,3 +151,76 @@ test("validator - Number.prototype.getNumberOfDays", function(assert) {
 		(13).getNumberOfDays();
 	}, "13");
 });
+
+test("validator - String.prototype.isAscii", function(assert) {
+	equal("".isAscii(), true, "<empty>");
+	equal("ABCDE".isAscii(), true, "ABCDE");
+	equal("ABCDEあ".isAscii(), false, "ABCDEあ");
+});
+
+test("validator - String.prototype.isAlpha", function(assert) {
+	equal("".isAlpha(), true, "<empty>");
+	equal("ABCDE".isAlpha(), true, "ABCDE");
+	equal("ABCDE1".isAlpha(), false, "ABCDE1");
+});
+
+test("validator - String.prototype.isNumeric", function(assert) {
+	equal("".isNumeric(), true, "<empty>");
+	equal("12345".isNumeric(), true, "12345");
+	equal("12345A".isNumeric(), false, "12345A");
+});
+
+test("validator - String.prototype.isAlphaNumeric", function(assert) {
+	equal("".isAlphaNumeric(), true, "<empty>");
+	equal("ABC123".isAlphaNumeric(), true, "ABC123");
+	equal("ABC123;".isAlphaNumeric(), false, "ABC123;");
+});
+
+test("validator - String.prototype.isHalfKatakana", function(assert) {
+	equal("".isHalfKatakana(), true, "<empty>");
+	equal("ｱｲｳｴｵ".isHalfKatakana(), true, "ｱｲｳｴｵ");
+	equal("ｱｲｳｴｵA".isHalfKatakana(), false, "ｱｲｳｴｵA");
+});
+
+test("validator - String.prototype.isHalfWidth", function(assert) {
+	equal("".isHalfWidth(), true, "<empty>");
+	equal("ABC123ｱｲｳ".isHalfWidth(), true, "ABC123ｱｲｳ");
+	equal("ABC123ｱｲｳあ".isHalfWidth(), false, "ABC123ｱｲｳあ");
+});
+
+test("validator - String.prototype.isFullAlpha", function(assert) {
+	equal("".isFullAlpha(), true, "<empty>");
+	equal("ＡＢＣＤＥ".isFullAlpha(), true, "ＡＢＣＤＥ");
+	equal("ＡＢＣＤＥ１".isFullAlpha(), false, "ＡＢＣＤＥ１");
+});
+
+test("validator - String.prototype.isFullNumeric", function(assert) {
+	equal("".isFullNumeric(), true, "<empty>");
+	equal("１２３４５".isFullNumeric(), true, "１２３４５");
+	equal("１２３４５Ａ".isFullNumeric(), false, "１２３４５Ａ");
+});
+
+test("validator - String.prototype.isFullAlphaNumeric", function(assert) {
+	equal("".isFullAlphaNumeric(), true, "<empty>");
+	equal("ＡＢＣ１２３".isFullAlphaNumeric(), true, "ＡＢＣ１２３");
+	equal("ＡＢＣ１２３；".isFullAlphaNumeric(), false, "ＡＢＣ１２３；");
+});
+
+test("validator - String.prototype.isFullHiragana", function(assert) {
+	equal("".isFullHiragana(), true, "<empty>");
+	equal("あいうえお".isFullHiragana(), true, "あいうえお");
+	equal("あいうえおア".isFullHiragana(), false, "あいうえおア");
+});
+
+test("validator - String.prototype.isFullKatakana", function(assert) {
+	equal("".isFullKatakana(), true, "<empty>");
+	equal("アイウエオ".isFullKatakana(), true, "アイウエオ");
+	equal("アイウエオあ".isFullKatakana(), false, "アイウエオあ");
+});
+
+test("validator - String.prototype.isFullWidth", function(assert) {
+	equal("".isFullWidth(), true, "<empty>");
+	equal("ＡＢＣ１２３あいうアイウ".isFullWidth(), true, "ＡＢＣ１２３あいうアイウ");
+	equal("ＡＢＣ１２３あいうアイウA".isFullWidth(), false, "ＡＢＣ１２３あいうアイウA");
+	equal("ＡＢＣ１２３あいうアイウｱ".isFullWidth(), false, "ＡＢＣ１２３あいうアイウｱ");
+});
