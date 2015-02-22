@@ -199,21 +199,11 @@ Number.prototype.isLeapYear = function() {
  * @returns {Number} 当月の日数。
  */
 Number.prototype.getNumberOfDays = function(year) {
-	switch (this) {
-	case 1:
-	case 3:
-	case 5:
-	case 7:
-	case 8:
-	case 10:
-	case 12:
+	if (this == 1 || this == 3 || this == 5 || this == 7 || this == 8 || this == 10 || this == 12) {
 		return 31;
-	case 4:
-	case 6:
-	case 9:
-	case 11:
+	} else if (this == 4 || this == 6 || this == 9 || this == 11) {
 		return 30;
-	case 2:
+	} else if (this == 2) {
 		if (year == undefined) {
 			return 28;
 		} else if (year.isLeapYear()) {
@@ -221,8 +211,8 @@ Number.prototype.getNumberOfDays = function(year) {
 		} else {
 			return 28;
 		}
-	default:
-		return 31;
+	} else {
+		throw this;
 	}
 };
 
