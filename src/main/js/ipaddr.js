@@ -1,5 +1,5 @@
 /*
- * Copyright 2012,2014 agwlvssainokuni
+ * Copyright 2012,2015 agwlvssainokuni
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,12 +28,12 @@ function IpAddr(addr) {
 }
 
 /** IPv4アドレス形式の正規表現. */
-IpAddr.IPV4_PATTERN = "^"
-		+ "(25[0-5]|2[0-4][0-9]|[01]?[0-9]{1,2})(\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9]{1,2})){3}"
+IpAddr.IPV4_PATTERN = "^"//
+		+ "(25[0-5]|2[0-4][0-9]|[01]?[0-9]{1,2})(\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9]{1,2})){3}" //
 		+ "$";
 
 /** IPv6アドレス形式の正規表現. */
-IpAddr.IPV6_PATTERN = "^"
+IpAddr.IPV6_PATTERN = "^"//
 		+ "("
 		// (1) IPv4混在なし
 		+ "("
@@ -46,12 +46,12 @@ IpAddr.IPV6_PATTERN = "^"
 		// ・後省略
 		+ "|([0-9a-f]{1,4}:){1,7}:"
 		// ・中省略
-		+ "|([0-9a-f]{1,4}:){1}(:[0-9a-f]{1,4}){1,6}"
-		+ "|([0-9a-f]{1,4}:){2}(:[0-9a-f]{1,4}){1,5}"
-		+ "|([0-9a-f]{1,4}:){3}(:[0-9a-f]{1,4}){1,4}"
-		+ "|([0-9a-f]{1,4}:){4}(:[0-9a-f]{1,4}){1,3}"
-		+ "|([0-9a-f]{1,4}:){5}(:[0-9a-f]{1,4}){1,2}"
-		+ "|([0-9a-f]{1,4}:){6}(:[0-9a-f]{1,4}){1}"
+		+ "|([0-9a-f]{1,4}:){1}(:[0-9a-f]{1,4}){1,6}" //
+		+ "|([0-9a-f]{1,4}:){2}(:[0-9a-f]{1,4}){1,5}" //
+		+ "|([0-9a-f]{1,4}:){3}(:[0-9a-f]{1,4}){1,4}" //
+		+ "|([0-9a-f]{1,4}:){4}(:[0-9a-f]{1,4}){1,3}" //
+		+ "|([0-9a-f]{1,4}:){5}(:[0-9a-f]{1,4}){1,2}" //
+		+ "|([0-9a-f]{1,4}:){6}(:[0-9a-f]{1,4}){1}" //
 		+ ")"
 		// (2) IPv4混在あり]
 		+ "|("
@@ -64,12 +64,12 @@ IpAddr.IPV6_PATTERN = "^"
 		// ・後省略
 		+ "|([0-9a-f]{1,4}:){1,5}"
 		// ・中省略
-		+ "|([0-9a-f]{1,4}:){1}(:[0-9a-f]{1,4}){1,4}"
-		+ "|([0-9a-f]{1,4}:){2}(:[0-9a-f]{1,4}){1,3}"
-		+ "|([0-9a-f]{1,4}:){3}(:[0-9a-f]{1,4}){1,2}"
+		+ "|([0-9a-f]{1,4}:){1}(:[0-9a-f]{1,4}){1,4}" //
+		+ "|([0-9a-f]{1,4}:){2}(:[0-9a-f]{1,4}){1,3}" //
+		+ "|([0-9a-f]{1,4}:){3}(:[0-9a-f]{1,4}){1,2}" //
 		+ "|([0-9a-f]{1,4}:){4}(:[0-9a-f]{1,4}){1}"
 		// ・共通末尾 (IPv4部)
-		+ "):(25[0-5]|2[0-4][0-9]|[01]?[0-9]{1,2})(\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9]{1,2})){3}"
+		+ "):(25[0-5]|2[0-4][0-9]|[01]?[0-9]{1,2})(\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9]{1,2})){3}" //
 		+ ")"
 		//
 		+ "$";
@@ -78,8 +78,7 @@ IpAddr.IPV6_PATTERN = "^"
  * IPアドレス形式判定 (IPv4).<br>
  * 文字列がIPv4アドレス形式であるか否か判定する。
  * 
- * @param {String}
- *            addr 判定対象の文字列。
+ * @param {String} addr 判定対象の文字列。
  * @return {Boolean} IPv4アドレス形式ならばtrue、さもなくばfalse。
  */
 IpAddr.isIpv4Addr = function(addr) {
@@ -93,8 +92,7 @@ IpAddr.isIpv4Addr = function(addr) {
  * IPアドレス形式判定 (IPv6).<br>
  * 文字列がIPv6アドレス形式であるか否かを判定する。
  * 
- * @param {String}
- *            addr 判定対象の文字列。
+ * @param {String} addr 判定対象の文字列。
  * @return {Boolean} IPv6アドレス形式ならばtrue、さもなくばfalse。
  */
 IpAddr.isIpv6Addr = function(addr) {
@@ -107,8 +105,7 @@ IpAddr.isIpv6Addr = function(addr) {
 /**
  * IPv4アドレスオブジェクトを生成する。
  * 
- * @param {String}
- *            addr IPアドレスの文字列表記。
+ * @param {String} addr IPアドレスの文字列表記。
  * @returns {IpAddr.V4} IPアドレスオブジェクト。
  */
 IpAddr.V4 = function(addr) {
@@ -154,8 +151,7 @@ IpAddr.V4.prototype = {
 /**
  * IPv4アドレスオブジェクトを生成する。
  * 
- * @param {String}
- *            addr IPアドレスの文字列表記。
+ * @param {String} addr IPアドレスの文字列表記。
  * @returns {IpAddr.V4} IPアドレスオブジェクト。
  */
 IpAddr.V6 = function(addr) {
@@ -187,8 +183,7 @@ IpAddr.V6 = function(addr) {
 		} else if (addrv6.match(/^::/)) {
 			this.v6 = padding(6, [], addrv6.substring(2).split(":"));
 		} else if (addrv6.match(/:$/)) {
-			this.v6 = padding(6, addrv6.substring(0, addrv6.length - 1).split(
-					":"), []);
+			this.v6 = padding(6, addrv6.substring(0, addrv6.length - 1).split(":"), []);
 		} else if (addrv6.match(/::/)) {
 			var part = addrv6.split("::");
 			this.v6 = padding(6, part[0].split(":"), part[1].split(":"));
@@ -205,8 +200,7 @@ IpAddr.V6 = function(addr) {
 		} else if (addrv6.match(/^::/)) {
 			this.v6 = padding(8, [], addrv6.substring(2).split(":"));
 		} else if (addrv6.match(/::$/)) {
-			this.v6 = padding(8, addrv6.substring(0, addrv6.length - 2).split(
-					":"), []);
+			this.v6 = padding(8, addrv6.substring(0, addrv6.length - 2).split(":"), []);
 		} else if (addrv6.match(/::/)) {
 			var part = addrv6.split("::");
 			this.v6 = padding(8, part[0].split(":"), part[1].split(":"));
@@ -414,10 +408,8 @@ IpAddr.V6.prototype = {
  * IPアドレスマスク数値表現.<br>
  * IPアドレスのサイズとプレフィクス長からビットマスクの数値表現を取得する。
  * 
- * @param {Number}
- *            size IPアドレスのサイズ。
- * @param {Number}
- *            length プレフィクス長。
+ * @param {Number} size IPアドレスのサイズ。
+ * @param {Number} length プレフィクス長。
  * @returns {Array} ビットマスクの数値表現。
  */
 IpAddr.getMask = function(size, length) {
@@ -464,8 +456,7 @@ IpAddr.getMask = function(size, length) {
  * IPv4アドレスネットマスク数値表現.<br>
  * IPv4アドレスのネットマスクの数値表現を取得する。
  * 
- * @param {Number}
- *            maskLength ネットマスク長。0から32の範囲で指定する。
+ * @param {Number} maskLength ネットマスク長。0から32の範囲で指定する。
  * @returns {Number} IPv4アドレスのネットマスクの数値表現。
  */
 IpAddr.V4.getMask = function(maskLength) {
@@ -482,8 +473,7 @@ IpAddr.V4.getMask = function(maskLength) {
  * IPv6アドレスプレフィクスマスク数値表現.<br>
  * IPv6アドレスのプレフィクスマスクの数値表現を取得する。
  * 
- * @param {Number}
- *            prefixLength プレフィクス長。0から128の範囲で指定する。
+ * @param {Number} prefixLength プレフィクス長。0から128の範囲で指定する。
  * @returns {Array} IPv6アドレスのプレフィクスマスクの数値表現。
  */
 IpAddr.V6.getMask = function(prefixLength) {
