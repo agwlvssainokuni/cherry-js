@@ -1,5 +1,5 @@
 /*
- * Copyright 2012,2014 agwlvssainokuni
+ * Copyright 2012,2015 agwlvssainokuni
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,29 +14,22 @@
  * limitations under the License.
  */
 
-test("msgfmt - index",
-		function() {
+test("msgfmt - index", function() {
 
-			equal(msgfmt("NONE", []), "NONE", "NONE; []");
+	equal(msgfmt("NONE", []), "NONE", "NONE; []");
 
-			equal(msgfmt("{0}", [ "A", "B", "C" ]), "A", "{0}, [ A, B, C ]");
-			equal(msgfmt("{1}", [ "A", "B", "C" ]), "B", "{1}, [ A, B, C ]");
-			equal(msgfmt("{2}", [ "A", "B", "C" ]), "C", "{2}, [ A, B, C ]");
+	equal(msgfmt("{0}", [ "A", "B", "C" ]), "A", "{0}, [ A, B, C ]");
+	equal(msgfmt("{1}", [ "A", "B", "C" ]), "B", "{1}, [ A, B, C ]");
+	equal(msgfmt("{2}", [ "A", "B", "C" ]), "C", "{2}, [ A, B, C ]");
 
-			equal(msgfmt("{0} {1} {2}", [ "A", "B", "C" ]), "A B C",
-					"{0} {1} {2}, [ A, B, C ]");
-			equal(msgfmt("{1} {2} {0}", [ "A", "B", "C" ]), "B C A",
-					"{1} {2} {0}, [ A, B, C ]");
-			equal(msgfmt("{2} {0} {1}", [ "A", "B", "C" ]), "C A B",
-					"{2} {0} {1}, [ A, B, C ]");
+	equal(msgfmt("{0} {1} {2}", [ "A", "B", "C" ]), "A B C", "{0} {1} {2}, [ A, B, C ]");
+	equal(msgfmt("{1} {2} {0}", [ "A", "B", "C" ]), "B C A", "{1} {2} {0}, [ A, B, C ]");
+	equal(msgfmt("{2} {0} {1}", [ "A", "B", "C" ]), "C A B", "{2} {0} {1}, [ A, B, C ]");
 
-			equal(msgfmt("{0} {1} {2}", [ "A", "B" ]), "A B ",
-					"{0} {1} {2}, [ A, B ]");
-			equal(msgfmt("{1} {2} {0}", [ "A", "B" ]), "B  A",
-					"{1} {2} {0}, [ A, B ]");
-			equal(msgfmt("{2} {0} {1}", [ "A", "B" ]), " A B",
-					"{2} {0} {1}, [ A, B ]");
-		});
+	equal(msgfmt("{0} {1} {2}", [ "A", "B" ]), "A B ", "{0} {1} {2}, [ A, B ]");
+	equal(msgfmt("{1} {2} {0}", [ "A", "B" ]), "B  A", "{1} {2} {0}, [ A, B ]");
+	equal(msgfmt("{2} {0} {1}", [ "A", "B" ]), " A B", "{2} {0} {1}, [ A, B ]");
+});
 
 test("msgfmt - name", function() {
 
