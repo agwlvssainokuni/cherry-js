@@ -17,8 +17,7 @@
 /**
  * 指定位置の文字のサイズ (Shift_JISエンコーディング換算のバイト長) を決定する。
  * 
- * @param {Number}
- *            pos 文字位置を指定する。
+ * @param {Number} pos 文字位置を指定する。
  * @returns {Number} 文字のサイズ。
  */
 String.prototype.unitNumAt = function(pos) {

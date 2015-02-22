@@ -30,8 +30,7 @@ String.prototype.blength = function() {
 /**
  * バイト単位の位置に対応する文字単位の位置を取得する。
  * 
- * @param {Number}
- *            pos バイト単位の位置。
+ * @param {Number} pos バイト単位の位置。
  * @returns {Number} 文字単位の位置。
  */
 String.prototype.bposition = function(pos) {
@@ -56,10 +55,8 @@ String.prototype.bposition = function(pos) {
 /**
  * バイト単位で範囲を指定して部分文字列を取得する。
  * 
- * @param {Number}
- *            start 開始位置。
- * @param {Number}
- *            end 終了位置。
+ * @param {Number} start 開始位置。
+ * @param {Number} end 終了位置。
  * @returns {String} 部分文字列。
  */
 String.prototype.bsubstring = function(start, end) {
@@ -102,8 +99,7 @@ String.prototype.bsubstring = function(start, end) {
 /**
  * 指定位置の文字のサイズを決定する。
  * 
- * @param {Number}
- *            pos 文字位置を指定する。
+ * @param {Number} pos 文字位置を指定する。
  * @returns {Number} 文字のサイズ。
  */
 String.prototype.unitNumAt = function(pos) {

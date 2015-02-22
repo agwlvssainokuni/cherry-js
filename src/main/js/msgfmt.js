@@ -17,15 +17,12 @@
 /**
  * メッセージ書式整形。
  * 
- * @param {String}
- *            template テンプレート文字列。
- * @param {Object}
- *            埋込みパラメタ。
+ * @param {String} template テンプレート文字列。
+ * @param {Object} 埋込みパラメタ。
  * @returns {String} 書式設計したメッセージ文字列。
  */
 function msgfmt(template, param) {
-	return template.replace(/(\{([0-9]+)\}|\$\{([-_0-9a-zA-Z]+)\})/g, function(
-			m, dmy0, index, name, o, t) {
+	return template.replace(/(\{([0-9]+)\}|\$\{([-_0-9a-zA-Z]+)\})/g, function(m, dmy0, index, name, o, t) {
 
 		if (index !== undefined && index != "") {
 			var v = param[Number(index)];
