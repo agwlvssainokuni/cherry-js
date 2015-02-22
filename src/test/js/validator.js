@@ -251,7 +251,9 @@ test("validator - String.prototype.isNumberFormat", function(assert) {
 
 test("validator - String.prototype.isDateFormat", function(assert) {
 	equal("".isDateFormat(), true, "<empty>");
+
 	equal("2015/01/23".isDateFormat(), true, "2015/01/23");
+
 	equal("20150123".isDateFormat(), false, "20150123");
 	equal("2015/00/23".isDateFormat(), false, "2015/00/23");
 	equal("2015/13/23".isDateFormat(), false, "2015/13/23");
@@ -261,6 +263,7 @@ test("validator - String.prototype.isDateFormat", function(assert) {
 
 test("validator - String.prototype.isTimeFormat", function(assert) {
 	equal("".isTimeFormat(), true, "<empty>");
+
 	equal("00:00:00".isTimeFormat(), true, "00:00:00");
 	equal("01:01:01".isTimeFormat(), true, "01:01:01");
 	equal("02:02:02".isTimeFormat(), true, "02:02:02");
@@ -285,7 +288,46 @@ test("validator - String.prototype.isTimeFormat", function(assert) {
 	equal("21:59:59".isTimeFormat(), true, "21:59:59");
 	equal("22:59:59".isTimeFormat(), true, "22:59:59");
 	equal("23:59:59".isTimeFormat(), true, "23:59:59");
+
 	equal("24:59:59".isTimeFormat(), false, "24:59:59");
 	equal("23:60:59".isTimeFormat(), false, "23:60:59");
 	equal("23:59:60".isTimeFormat(), false, "23:59:60");
+});
+
+test("validator - String.prototype.isDateTimeFormat", function(assert) {
+	equal("".isDateTimeFormat(), true, "<empty>");
+
+	equal("2015/01/23 00:00:00".isDateTimeFormat(), true, "2015/01/23 00:00:00");
+	equal("2015/01/23 01:01:01".isDateTimeFormat(), true, "2015/01/23 01:01:01");
+	equal("2015/01/23 02:02:02".isDateTimeFormat(), true, "2015/01/23 02:02:02");
+	equal("2015/01/23 03:03:03".isDateTimeFormat(), true, "2015/01/23 03:03:03");
+	equal("2015/01/23 04:04:04".isDateTimeFormat(), true, "2015/01/23 04:04:04");
+	equal("2015/01/23 05:05:05".isDateTimeFormat(), true, "2015/01/23 05:05:05");
+	equal("2015/01/23 06:06:06".isDateTimeFormat(), true, "2015/01/23 06:06:06");
+	equal("2015/01/23 07:07:07".isDateTimeFormat(), true, "2015/01/23 07:07:07");
+	equal("2015/01/23 08:08:08".isDateTimeFormat(), true, "2015/01/23 08:08:08");
+	equal("2015/01/23 09:09:09".isDateTimeFormat(), true, "2015/01/23 09:09:09");
+	equal("2015/01/23 10:10:10".isDateTimeFormat(), true, "2015/01/23 10:10:10");
+	equal("2015/01/23 11:10:10".isDateTimeFormat(), true, "2015/01/23 11:10:10");
+	equal("2015/01/23 12:20:20".isDateTimeFormat(), true, "2015/01/23 12:20:20");
+	equal("2015/01/23 13:30:30".isDateTimeFormat(), true, "2015/01/23 13:30:30");
+	equal("2015/01/23 14:40:40".isDateTimeFormat(), true, "2015/01/23 14:40:40");
+	equal("2015/01/23 15:50:50".isDateTimeFormat(), true, "2015/01/23 15:50:50");
+	equal("2015/01/23 16:19:19".isDateTimeFormat(), true, "2015/01/23 16:19:19");
+	equal("2015/01/23 17:29:29".isDateTimeFormat(), true, "2015/01/23 17:29:29");
+	equal("2015/01/23 18:39:39".isDateTimeFormat(), true, "2015/01/23 18:39:39");
+	equal("2015/01/23 19:49:49".isDateTimeFormat(), true, "2015/01/23 19:49:49");
+	equal("2015/01/23 20:59:59".isDateTimeFormat(), true, "2015/01/23 20:59:59");
+	equal("2015/01/23 21:59:59".isDateTimeFormat(), true, "2015/01/23 21:59:59");
+	equal("2015/01/23 22:59:59".isDateTimeFormat(), true, "2015/01/23 22:59:59");
+	equal("2015/01/23 23:59:59".isDateTimeFormat(), true, "2015/01/23 23:59:59");
+
+	equal("20150123 000000".isDateTimeFormat(), false, "20150123 000000");
+	equal("2015/00/23 23:59:59".isDateTimeFormat(), false, "2015/00/23 23:59:59");
+	equal("2015/13/23 23:59:59".isDateTimeFormat(), false, "2015/13/23 23:59:59");
+	equal("2015/01/00 23:59:59".isDateTimeFormat(), false, "2015/01/00 23:59:59");
+	equal("2015/01/32 23:59:59".isDateTimeFormat(), false, "2015/01/32 23:59:59");
+	equal("2015/01/23 24:59:59".isDateTimeFormat(), false, "2015/01/23 24:59:59");
+	equal("2015/01/23 23:60:59".isDateTimeFormat(), false, "2015/01/23 23:60:59");
+	equal("2015/01/23 23:59:60".isDateTimeFormat(), false, "2015/01/23 23:59:60");
 });
