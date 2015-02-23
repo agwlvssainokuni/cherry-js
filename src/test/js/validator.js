@@ -112,6 +112,8 @@ test("validator - Number.prototype.isFullHiragana", function(assert) {
 	for (var i = 0; i < text.length; i++) {
 		equal(text.charCodeAt(i).isFullHiragana(), true, text.substring(i, i + 1) + " true");
 	}
+	equal(0x30A0.isFullHiragana(), true, "0x30A0 true");
+	equal(0x30FF.isFullHiragana(), true, "0x30FF true");
 	equal(0x303F.isFullHiragana(), false, "0x303F false");
 	equal(0x3100.isFullHiragana(), false, "0x3100 false");
 });
@@ -121,6 +123,14 @@ test("validator - Number.prototype.isFullKatakana", function(assert) {
 	for (var i = 0; i < text.length; i++) {
 		equal(text.charCodeAt(i).isFullKatakana(), true, text.substring(i, i + 1) + " true");
 	}
+	for (var i = 0x31F0; i <= 0x31FF; i++) {
+		equal(i.isFullKatakana(), true, "0x" + i.toString(16).toUpperCase() + " true");
+	}
+	equal(0x3099.isFullKatakana(), true, "0x3099 true");
+	equal(0x309A.isFullKatakana(), true, "0x309A true");
+	equal(0x309F.isFullKatakana(), true, "0x309F true");
+	equal(0x31EF.isFullKatakana(), false, "0x31EF false");
+	equal(0x3200.isFullKatakana(), false, "0x3200 false");
 	equal(0x303F.isFullKatakana(), false, "0x303F false");
 	equal(0x3100.isFullKatakana(), false, "0x3100 false");
 });
