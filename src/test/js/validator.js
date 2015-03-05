@@ -247,6 +247,9 @@ test("validator - String.prototype.isNumberFormat", function(assert) {
 	equal("123.4".isNumberFormat(), true, "123.4");
 	equal("+123.4".isNumberFormat(), true, "+123.4");
 	equal("-123.4".isNumberFormat(), true, "-123.4");
+	equal(".4".isNumberFormat(), true, ".4");
+	equal("+.4".isNumberFormat(), true, "+.4");
+	equal("-.4".isNumberFormat(), true, "-.4");
 
 	equal("123A".isNumberFormat(), false, "123A");
 	equal("+123A".isNumberFormat(), false, "+123A");
@@ -257,6 +260,13 @@ test("validator - String.prototype.isNumberFormat", function(assert) {
 	equal("123.4A".isNumberFormat(), false, "123.4A");
 	equal("+123.4A".isNumberFormat(), false, "+123.4A");
 	equal("-123.4A".isNumberFormat(), false, "-123.4A");
+	equal(".".isNumberFormat(), false, ".");
+	equal(".A".isNumberFormat(), false, ".A");
+	equal("+.A".isNumberFormat(), false, "+.A");
+	equal("-.A".isNumberFormat(), false, "-.A");
+	equal(".4A".isNumberFormat(), false, ".4A");
+	equal("+.4A".isNumberFormat(), false, "+.4A");
+	equal("-.4A".isNumberFormat(), false, "-.4A");
 });
 
 test("validator - String.prototype.isDateFormat", function(assert) {
