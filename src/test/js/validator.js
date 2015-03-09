@@ -108,7 +108,8 @@ test("validator - Number.prototype.isFullAlpha", function(assert) {
 });
 
 test("validator - Number.prototype.isFullHiragana", function(assert) {
-	var text = "ぁあぃいぅうぇえぉおかがきぎくぐけげこごさざしじすずせぜそぞただちぢっつづてでとどなにぬねのはばぱひびぴふぶぷへべぺほぼぽまみむめもゃやゅゆょよらりるれろゎわゐゑをんゔゕゖ゙゚ゝゞゟ" + "・ー";
+	var text = "ぁあぃいぅうぇえぉおかがきぎくぐけげこごさざしじすずせぜそぞただちぢっつづてでとどなにぬねのはばぱひびぴふぶぷへべぺほぼぽまみむめもゃやゅゆょよらりるれろゎわゐゑをんゔゕゖ゙゚ゝゞゟ" + "・ー"
+			+ "、。「」『』";
 	for (var i = 0; i < text.length; i++) {
 		equal(text.charCodeAt(i).isFullHiragana(), true, text.substring(i, i + 1) + " true");
 	}
@@ -119,7 +120,8 @@ test("validator - Number.prototype.isFullHiragana", function(assert) {
 });
 
 test("validator - Number.prototype.isFullKatakana", function(assert) {
-	var text = "ァアィイゥウェエォオカガキギクグケゲコゴサザシジスズセゼソゾタダチヂッツヅテデトドナニヌネノハバパヒビピフブプヘベペホボポマミムメモャヤュユョヨラリルレロヮワヰヱヲンヴヵヶヷヸヹヺ・ヽヾヿ" + "゛゜";
+	var text = "ァアィイゥウェエォオカガキギクグケゲコゴサザシジスズセゼソゾタダチヂッツヅテデトドナニヌネノハバパヒビピフブプヘベペホボポマミムメモャヤュユョヨラリルレロヮワヰヱヲンヴヵヶヷヸヹヺ・ヽヾヿ" + "゛゜"
+			+ "、。「」『』";
 	for (var i = 0; i < text.length; i++) {
 		equal(text.charCodeAt(i).isFullKatakana(), true, text.substring(i, i + 1) + " true");
 	}
