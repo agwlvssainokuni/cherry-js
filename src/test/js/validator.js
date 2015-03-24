@@ -7661,7 +7661,7 @@ test("validator - Number.prototype.isCp932", function(assert) {
 			break;
 		}
 	}
-	equal(0xFFFF.isCp932(), false, "0x" + 0xFFFF.toString(16).toUpperCase() + " false");
+	equal(0x30A0.isCp932(), false, "0x" + 0x30A0.toString(16).toUpperCase() + " false");
 });
 
 test("validator - Number.prototype.isLeapYear", function(assert) {
@@ -7762,6 +7762,12 @@ test("validator - String.prototype.isFullWidth", function(assert) {
 	equal("ＡＢＣ１２３あいうアイウ".isFullWidth(), true, "ＡＢＣ１２３あいうアイウ");
 	equal("ＡＢＣ１２３あいうアイウA".isFullWidth(), false, "ＡＢＣ１２３あいうアイウA");
 	equal("ＡＢＣ１２３あいうアイウｱ".isFullWidth(), false, "ＡＢＣ１２３あいうアイウｱ");
+});
+
+test("validator - String.prototype.isCp932", function(assert) {
+	equal("".isCp932(), true, "<empty>");
+	equal("ＡＢＣ１２３あいうアイウ".isCp932(), true, "ＡＢＣ１２３あいうアイウ");
+	equal("ＡＢＣ１２３あいうアイウ\u30A0".isCp932(), false, "ＡＢＣ１２３あいうアイウ\u30A0");
 });
 
 test("validator - String.prototype.isNumberFormat", function(assert) {
