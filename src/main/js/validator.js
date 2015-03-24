@@ -193,7 +193,7 @@ Number.prototype.isFullKatakana = function() {
  * @returns {Boolean} 文字集合 CP932 (Windows-31J) に含まれるならば真(true)、さもなくば、偽(false)。
  */
 Number.prototype.isCp932 = function() {
-	switch (this) {
+	switch (Number(this)) {
 	case 0x0000:
 	case 0x0001:
 	case 0x0002:
