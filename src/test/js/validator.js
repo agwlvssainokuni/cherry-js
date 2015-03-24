@@ -7659,11 +7659,9 @@ test("validator - Number.prototype.isCp932", function(assert) {
 		case 0xFFE5:
 			equal(i.isCp932(), true, "0x" + i.toString(16).toUpperCase() + " true");
 			break;
-		default:
-			equal(i.isCp932(), false, "0x" + i.toString(16).toUpperCase() + " false");
-			break;
 		}
 	}
+	equal(0xFFFF.isCp932(), false, "0x" + 0xFFFF.toString(16).toUpperCase() + " false");
 });
 
 test("validator - Number.prototype.isLeapYear", function(assert) {
