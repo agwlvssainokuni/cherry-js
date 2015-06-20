@@ -8043,3 +8043,45 @@ String.prototype.isDateTimeFormat = function() {
 	var d = Number(match[3]);
 	return m >= 1 && m <= 12 && d >= 1 && d <= m.getNumberOfDays(y);
 };
+
+/**
+ * URL形式であるか検証する。<br />
+ * <a href="https://ietf.org/rfc/rfc3986.txt">"RFC 3986 - Uniform Resource
+ * Identifier (URI): Generic Syntax"</a> の "Appendix B. Parsing a URI Reference
+ * with a Regular Expression" に記載されている正規表現により照合する。
+ * 
+ * @returns {Boolean} URL形式ならばtrue、さもなくばfalse。
+ */
+String.prototype.isURL = function() {
+	if (this.length <= 0) {
+		return true;
+	}
+	var match = /^(([^:\/?#]+):)?(\/\/([^/?#]*))?([^?#]*)(\?([^#]*))?(#(.*))?/.exec(this);
+	if (match == null) {
+		return false;
+	}
+	return true;
+};
+
+/**
+ * URL形式として解析 (分解) する。<br />
+ * <a href="https://ietf.org/rfc/rfc3986.txt">"RFC 3986 - Uniform Resource
+ * Identifier (URI): Generic Syntax"</a> の "Appendix B. Parsing a URI Reference
+ * with a Regular Expression" に記載されている正規表現により解析する。
+ * 
+ * @returns {Object} スキーム (scheme), ホスト (authority), パス (path), クエリ (query),
+ *          フラグメント (fragment) のプロパティを持つオブジェクト。URL形式でない場合はnull。
+ */
+String.prototype.parseURL = function() {
+	var match = /^(([^:\/?#]+):)?(\/\/([^/?#]*))?([^?#]*)(\?([^#]*))?(#(.*))?/.exec(this);
+	if (match == null) {
+		return null;
+	}
+	return {
+		scheme : match[2],
+		authority : match[4],
+		path : match[5],
+		query : match[7],
+		fragment : match[9]
+	};
+};

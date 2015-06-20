@@ -7886,3 +7886,60 @@ test("validator - String.prototype.isDateTimeFormat", function(assert) {
 	equal("2015/01/23 23:60:59".isDateTimeFormat(), false, "2015/01/23 23:60:59");
 	equal("2015/01/23 23:59:60".isDateTimeFormat(), false, "2015/01/23 23:59:60");
 });
+
+test("validator - String.prototype.isURL", function(assert) {
+	equal("http://aaa/bbb/ccc?ddd=eee#fff".isURL(), true, "http://aaa/bbb/ccc?ddd=eee#fff");
+	equal("http://aaa/bbb/ccc?ddd=eee".isURL(), true, "http://aaa/bbb/ccc?ddd=eee");
+	equal("http://aaa/bbb/ccc#fff".isURL(), true, "http://aaa/bbb/ccc#fff");
+	equal("http://aaa/?ddd=eee#fff".isURL(), true, "http://aaa/?ddd=eee#fff");
+	equal("http:/bbb/ccc?ddd=eee#fff".isURL(), true, "http:/bbb/ccc?ddd=eee#fff");
+	equal("//aaa/bbb/ccc?ddd=eee#fff".isURL(), true, "//aaa/bbb/ccc?ddd=eee#fff");
+});
+
+test("validator - String.prototype.parseURL", function(assert) {
+	function objectEqual(result, expected, message) {
+		equal(JSON.stringify(result), JSON.stringify(expected), message);
+	}
+	objectEqual("http://aaa/bbb/ccc?ddd=eee#fff".parseURL(), {
+		scheme : "http",
+		authority : "aaa",
+		path : "/bbb/ccc",
+		query : "ddd=eee",
+		fragment : "fff"
+	}, "http://aaa/bbb/ccc?ddd=eee#fff");
+	objectEqual("http://aaa/bbb/ccc?ddd=eee".parseURL(), {
+		scheme : "http",
+		authority : "aaa",
+		path : "/bbb/ccc",
+		query : "ddd=eee",
+		fragment : undefined
+	}, "http://aaa/bbb/ccc?ddd=eee");
+	objectEqual("http://aaa/bbb/ccc#fff".parseURL(), {
+		scheme : "http",
+		authority : "aaa",
+		path : "/bbb/ccc",
+		query : undefined,
+		fragment : "fff"
+	}, "http://aaa/bbb/ccc#fff");
+	objectEqual("http://aaa?ddd=eee#fff".parseURL(), {
+		scheme : "http",
+		authority : "aaa",
+		path : "",
+		query : "ddd=eee",
+		fragment : "fff"
+	}, "http://aaa/?ddd=eee#fff");
+	objectEqual("http:/bbb/ccc?ddd=eee#fff".parseURL(), {
+		scheme : "http",
+		authority : undefined,
+		path : "/bbb/ccc",
+		query : "ddd=eee",
+		fragment : "fff"
+	}, "http:/bbb/ccc?ddd=eee#fff");
+	objectEqual("//aaa/bbb/ccc?ddd=eee#fff".parseURL(), {
+		scheme : undefined,
+		authority : "aaa",
+		path : "/bbb/ccc",
+		query : "ddd=eee",
+		fragment : "fff"
+	}, "//aaa/bbb/ccc?ddd=eee#fff");
+});
