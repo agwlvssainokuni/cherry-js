@@ -1,5 +1,5 @@
 /*
- * Copyright 2014,2015 agwlvssainokuni
+ * Copyright 2014,2016 agwlvssainokuni
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -8084,4 +8084,30 @@ String.prototype.parseURL = function() {
 		query : match[7],
 		fragment : match[9]
 	};
+};
+
+/**
+ * 改行あり文字列の長さ (文字数) を計数する。<br />
+ * 一つの改行を何文字として計数するかを指定し、当文字列の全体の長さを計数する。<br />
+ * なお、改行文字の種別としては、CRLF (0x0D 0x0A) またはLF (0x0A) を想定する。
+ * 
+ * @param {Number} perLineBreak 一つの改行を何文字として計数するかを指定する。
+ * @returns {Number} 文字列の長さ (文字数)。
+ */
+String.prototype.lengthWithLineBreak = function(perLineBreak) {
+	var len = 0;
+	for (var i = 0; i < this.length; i++) {
+		var ch = this.charCodeAt(i);
+		switch (ch) {
+		case 0x000D: // CR
+			break;
+		case 0X000A: // LF
+			len += perLineBreak;
+			break;
+		default:
+			len += 1;
+			break;
+		}
+	}
+	return len;
 };

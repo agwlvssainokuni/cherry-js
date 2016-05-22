@@ -1,5 +1,5 @@
 /*
- * Copyright 2014,2015 agwlvssainokuni
+ * Copyright 2014,2016 agwlvssainokuni
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -7942,4 +7942,29 @@ test("validator - String.prototype.parseURL", function(assert) {
 		query : "ddd=eee",
 		fragment : "fff"
 	}, "//aaa/bbb/ccc?ddd=eee#fff");
+});
+
+test("lengthWithLineBreak - String.prototype.lengthWithLineBreak", function(assert) {
+	equal("".lengthWithLineBreak(2), 0, "(empty)");
+	equal("abcde".lengthWithLineBreak(2), 5, "abcde");
+	equal("abcde\nfghij".lengthWithLineBreak(2), 12, "abcde\\nfghij");
+	equal("abcde\nfghij\n".lengthWithLineBreak(2), 14, "abcde\\nfghij\\n");
+	equal("abcde\r\nfghij".lengthWithLineBreak(2), 12, "abcde\\r\\nfghij");
+	equal("abcde\r\nfghij\r\n".lengthWithLineBreak(2), 14, "abcde\\r\\nfghij\\r\\n");
+	equal("あいうえお".lengthWithLineBreak(2), 5, "あいうえお");
+	equal("あいうえお\nかきくけこ".lengthWithLineBreak(2), 12, "あいうえお\\nかきくけこ");
+	equal("あいうえお\nかきくけこ\n".lengthWithLineBreak(2), 14, "あいうえお\\nかきくけこ\\n");
+	equal("あいうえお\r\nかきくけこ".lengthWithLineBreak(2), 12, "あいうえお\\r\\nかきくけこ");
+	equal("あいうえお\r\nかきくけこ\r\n".lengthWithLineBreak(2), 14, "あいうえお\\r\\nかきくけこ\\r\\n");
+	equal("".lengthWithLineBreak(1), 0, "(empty)");
+	equal("abcde".lengthWithLineBreak(1), 5, "abcde");
+	equal("abcde\nfghij".lengthWithLineBreak(1), 11, "abcde\\nfghij");
+	equal("abcde\nfghij\n".lengthWithLineBreak(1), 12, "abcde\\nfghij\\n");
+	equal("abcde\r\nfghij".lengthWithLineBreak(1), 11, "abcde\\r\\nfghij");
+	equal("abcde\r\nfghij\r\n".lengthWithLineBreak(1), 12, "abcde\\r\\nfghij\\r\\n");
+	equal("あいうえお".lengthWithLineBreak(1), 5, "あいうえお");
+	equal("あいうえお\nかきくけこ".lengthWithLineBreak(1), 11, "あいうえお\\nかきくけこ");
+	equal("あいうえお\nかきくけこ\n".lengthWithLineBreak(1), 12, "あいうえお\\nかきくけこ\\n");
+	equal("あいうえお\r\nかきくけこ".lengthWithLineBreak(1), 11, "あいうえお\\r\\nかきくけこ");
+	equal("あいうえお\r\nかきくけこ\r\n".lengthWithLineBreak(1), 12, "あいうえお\\r\\nかきくけこ\\r\\n");
 });
